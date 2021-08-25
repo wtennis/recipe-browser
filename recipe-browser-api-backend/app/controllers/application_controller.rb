@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
   # Add your routes here
   
   get "/" do
-    "test"
+    "home"
   end
   
   get "/recipes" do
@@ -13,6 +13,10 @@ class ApplicationController < Sinatra::Base
   
   get "/ingredients" do
     Ingredient.all.to_json
+  end
+
+  get "/my_recipes" do 
+    User.first.recipes.to_json
   end
 
 end
