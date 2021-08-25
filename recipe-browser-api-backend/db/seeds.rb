@@ -29,19 +29,19 @@ recipes = [
         name: "Chicken and Waffles",
         cuisine: "American",
         description: "Breaded fried chicken with waffles. Served with maple syrup.",
-        is_vegetarian?: false
+        is_vegetarian: false
     },
     {
         name: "Smoked Salmon",
         cuisine: "Scandinavian",
         description: "Fresh Norwegian salmon, lightly brushed with herbed Dijon mustard sauce.",
-        is_vegetarian?: false
+        is_vegetarian: false
     },
     {
         name: "Apple pie",
         cuisine: "American",
         description: "Granny Smith apples mixed with brown sugar and butter filling, in a flaky all-butter crust, with ice cream.",
-        is_vegetarian?: true
+        is_vegetarian: true
     }
 ]
 
