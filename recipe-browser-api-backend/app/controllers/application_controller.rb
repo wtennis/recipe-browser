@@ -19,4 +19,24 @@ class ApplicationController < Sinatra::Base
     User.first.recipes.to_json
   end
 
+  get "/recipes/:id" do
+    recipe = Recipe.find(params[:id])
+    recipe.to_json
+    # ingr = recipe.ingredients
+    # recipe_with_ingredients = {
+    #   name: recipe.name, 
+    #   description: recipe.description, 
+    #   cuisine: recipe.cuisine,
+    #   is_vegetarian: recipe.is_vegetarian,
+    #   ingredients: recipe.ingredients
+    #  }
+    # recipe_with_ingredients.to_json
+  end
+
+  get "/recipes/:id/ingredients" do
+    recipe = Recipe.find(params[:id])
+    recipe.ingredients.to_json
+  end
+
+
 end
