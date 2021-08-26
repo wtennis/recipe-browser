@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function RecipeItem({ recipe }){
     const [ingredients, setIngredients] = useState([])
-    const [newIngredient, setNewIngredient] = useState("")
+    const [newIngredient, setNewIngredient] = useState({name: "", id: null})
 
     function handleConsoleOneRecipeClick() {
         fetch(`http://localhost:9292/recipes/${recipe.id}`, {
@@ -13,10 +13,12 @@ function RecipeItem({ recipe }){
       }
 
 
-    function handleIngredientsClick() {
-        console.log('handleIngredientsClick')
+    function handleShowIngredientsClick() {
+        console.log('handleShowIngredientsClick')
         
-        fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`)
+        fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
+            method: "GET",
+          })
             .then((r) => r.json())
             .then(data => {
                 setIngredients(data);
@@ -26,7 +28,34 @@ function RecipeItem({ recipe }){
 
     function handleAddIngredient() {
         console.log(newIngredient)
-        // Post new row to RecipeIngredient with appropriate recipe_id and ingredient_id
+
+        // First, find_or_create ingredient in master ingredients table
+      fetch("http://localhost:9292/ingredients", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: newIngredient.name
+            }),
+            })
+            .then((r) => r.json())
+            .then((newI) => {
+                setNewIngredient({name: "", id: null})
+                setIngredients([...ingredients, newI])
+                // Then, POST new row to RecipeIngredient (associate the ingredient with a recipe)
+                // OTHERWISE, ingredient will not show up with this recipe upon refresh
+                fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        ingredient_id: newI.id,
+                    }),
+                    });
+            });
+
     }
 
 
@@ -35,10 +64,9 @@ function RecipeItem({ recipe }){
             <h3>{recipe.name}</h3>
             <p>{recipe.description}</p>
             <button onClick = {() => handleConsoleOneRecipeClick(recipe.id)}>Console.log this recipe</button>
-
        
         {ingredients.length === 0?
-                <button onClick = {handleIngredientsClick}>Ingredients</button>
+                <button onClick = {handleShowIngredientsClick}>Show Ingredients</button>
             :
                 <>
                     <ul>Ingredients</ul>
@@ -50,8 +78,8 @@ function RecipeItem({ recipe }){
                         type="text"
                         name="name"
                         id="name"
-                        value={newIngredient}
-                        onChange={(e) => setNewIngredient(e.target.value)}
+                        value={newIngredient.name}
+                        onChange={(e) => setNewIngredient({name: e.target.value, id: null})}
                     />
                     <button type = "submit" onClick = {handleAddIngredient}>Add ingredient</button>
                 
