@@ -14,8 +14,6 @@ function MyRecipeItem({ recipe }){
 
 
       function handleShowIngredientsClick() {
-        //fix this fetch to grab ingredients from user_recipe_ingredients!
-        //path: "/my_recipes/:id/ingredients"
                 (fetch(`http://localhost:9292/my_recipes/${recipe.id}/ingredients`, {
                     method: "GET",
                 })
@@ -26,10 +24,8 @@ function MyRecipeItem({ recipe }){
             }
 
     function handleAddIngredient() {
-        console.log(newIngredient)
 
-        // First, find_or_create ingredient in master ingredients table
-      fetch("http://localhost:9292/ingredients", {
+        fetch("http://localhost:9292/ingredients", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -42,9 +38,8 @@ function MyRecipeItem({ recipe }){
             .then((newI) => {
                 setNewIngredient({name: "", id: null})
                 setIngredients([...ingredients, newI])
-                // Then, POST new row to user_recipe_ingredients (associate the ingredient with this recipe and this user)
-                // OTHERWISE, ingredient will not show up with this recipe upon refresh
-                fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
+                
+                fetch(`http://localhost:9292/my_recipes/${recipe.id}/ingredients`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

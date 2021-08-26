@@ -13,13 +13,13 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/recipes">
+        <Route exact path="/recipes">
           <RecipesContainer />
         </Route>
-        <Route path="/my_recipes">
+        <Route exact path="/my_recipes">
           <MyRecipesContainer />
         </Route>
-        <Route path="/ingredients">
+        <Route exact path="/ingredients">
           <IngredientsContainer />
         </Route>
       </Switch>
