@@ -182,5 +182,42 @@ UserRecipeIngredient.create(
     ingredient_id: 10
 )
 
+UserRecipeIngredient.create(
+    user_id: 1,
+    recipe_id: 2,
+    ingredient_id: 1
+)
+
+UserRecipeIngredient.create(
+    user_id: 1,
+    recipe_id: 2,
+    ingredient_id: 3
+)
+
+UserRecipeIngredient.create(
+    user_id: 1,
+    recipe_id: 2,
+    ingredient_id: 2
+)
+UserRecipeIngredient.create(
+    user_id: 1,
+    recipe_id: 2,
+    ingredient_id: 7
+)
+UserRecipeIngredient.create(
+    user_id: 1,
+    recipe_id: 2,
+    ingredient_id: 8
+)
+UserRecipeIngredient.create(
+    user_id: 1,
+    recipe_id: 2,
+    ingredient_id: 9
+)
+UserRecipeIngredient.create(
+    user_id: 1,
+    recipe_id: 2,
+    ingredient_id: 15
+)
 
 puts "✅  Done seeding! ✅ "
