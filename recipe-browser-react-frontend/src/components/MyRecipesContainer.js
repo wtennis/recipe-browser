@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MyRecipeItem from './RecipeItem';
+import MyRecipeItem from './MyRecipeItem';
 
 
 function MyRecipesContainer(){

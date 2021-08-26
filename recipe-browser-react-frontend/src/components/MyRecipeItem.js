@@ -13,18 +13,15 @@ function MyRecipeItem({ recipe }){
       }
 
 
-    function handleShowIngredientsClick() {
-        console.log('handleShowIngredientsClick')
-        
-        fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
-            method: "GET",
-          })
-            .then((r) => r.json())
-            .then(data => {
-                setIngredients(data);
-                console.log(data)
-            });
-    }
+      function handleShowIngredientsClick() {
+                (fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
+                    method: "GET",
+                })
+                    .then((r) => r.json())
+                    .then(data => {
+                        setIngredients(data);
+                    }))    
+            }
 
     function handleAddIngredient() {
         console.log(newIngredient)
@@ -63,12 +60,11 @@ function MyRecipeItem({ recipe }){
         <div>
             <h3>{recipe.name}</h3>
             <p>{recipe.description}</p>
-            <button onClick = {() => handleConsoleOneRecipeClick(recipe.id)}>Console.log this recipe</button>
+            <button onClick = {() => handleConsoleOneRecipeClick(recipe.id)}>Delete this recipe</button>
        
-        {ingredients.length === 0?
-                <button onClick = {handleShowIngredientsClick}>Show Ingredients</button>
-            :
-                <>
+        {ingredients.length?
+                    <>
+                    <button onClick = {() => setIngredients([])}>Hide Ingredients</button>
                     <ul>Ingredients</ul>
                     {ingredients.map(i => (
                     <li key = {i.id}>{i.name}</li>
@@ -84,6 +80,8 @@ function MyRecipeItem({ recipe }){
                     <button type = "submit" onClick = {handleAddIngredient}>Add ingredient</button>
                 
                 </>
+            :
+                <button onClick = {handleShowIngredientsClick}>Show Ingredients</button>
         }
 
         </div>
