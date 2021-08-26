@@ -26,8 +26,9 @@ fetchRecipes();
                 <div>
       
                 <h3>This is RecipesContainer</h3>
+                
                 {recipes.map((recipe) => (
-                        <RecipeItem recipe={recipe}/>
+                        <RecipeItem key = {recipe.id} recipe={recipe}/>
                     ))}
                 
                 </div>

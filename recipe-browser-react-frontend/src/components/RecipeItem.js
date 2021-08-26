@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 function RecipeItem({ recipe }){
     const [ingredients, setIngredients] = useState([])
+    const [newIngredient, setNewIngredient] = useState("")
 
     function handleConsoleOneRecipeClick() {
         fetch(`http://localhost:9292/recipes/${recipe.id}`, {
@@ -17,8 +18,15 @@ function RecipeItem({ recipe }){
         
         fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`)
             .then((r) => r.json())
-            .then(console.log);
+            .then(data => {
+                setIngredients(data);
+                console.log(data)
+            });
+    }
 
+    function handleAddIngredient() {
+        console.log(newIngredient)
+        // Post new row to RecipeIngredient with appropriate recipe_id and ingredient_id
     }
 
 
@@ -30,9 +38,24 @@ function RecipeItem({ recipe }){
 
        
         {ingredients.length === 0?
-            <button onClick = {handleIngredientsClick}>Ingredients</button>
+                <button onClick = {handleIngredientsClick}>Ingredients</button>
             :
-            <h4>Ingredients...</h4>
+                <>
+                    <ul>Ingredients</ul>
+                    {ingredients.map(i => (
+                    <li key = {i.id}>{i.name}</li>
+                    ))}
+
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        value={newIngredient}
+                        onChange={(e) => setNewIngredient(e.target.value)}
+                    />
+                    <button type = "submit" onClick = {handleAddIngredient}>Add ingredient</button>
+                
+                </>
         }
 
         </div>

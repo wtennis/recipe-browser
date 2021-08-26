@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import RecipesContainer from './components/RecipesContainer';
 import MyRecipesContainer from './components/MyRecipesContainer';
+import IngredientsContainer from './components/IngredientsContainer';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route path="/my_recipes">
           <MyRecipesContainer />
+        </Route>
+        <Route path="/ingredients">
+          <IngredientsContainer />
         </Route>
       </Switch>
     </Router>
