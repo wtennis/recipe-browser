@@ -46,7 +46,7 @@ useEffect(() => {
             {ingredients.length !== 0? 
                     <div>
         
-                    <h3>This is IngredientsContainer</h3>
+                    <h1>This is IngredientsContainer</h1>
                     
                     <input
                         type="text"

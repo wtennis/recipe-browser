@@ -4,7 +4,8 @@ function RecipeItem({ recipe }){
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState({name: "", id: null})
 
-    function handleConsoleOneRecipeClick() {
+    function handleDeleteClick() {
+        //fix this fetch to DELETE the all instances of this recipe from user_recipe_ingredients!
         fetch(`http://localhost:9292/recipes/${recipe.id}`, {
           method: "GET",
         })
@@ -14,6 +15,8 @@ function RecipeItem({ recipe }){
 
 
     function handleShowIngredientsClick() {
+        //fix this fetch to grab ingredients from user_recipe_ingredients!
+        //path: "/recipes/:id/ingredients"
                 (fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
                     method: "GET",
                 })
@@ -27,7 +30,7 @@ function RecipeItem({ recipe }){
         <div>
             <h3>{recipe.name}</h3>
             <p>{recipe.description}</p>
-            <button onClick = {() => handleConsoleOneRecipeClick(recipe.id)}>Save this recipe</button>
+            <button onClick = {() => handleDeleteClick(recipe.id)}>Save this recipe</button>
        
         {ingredients.length?
                 <>

@@ -40,6 +40,7 @@ function RecipesContainer(){
     <>
         {recipes.length !== 0? 
                 <div>
+                <h1>This is Recipes</h1>
                 <br></br>
                     <input
                     type="text"
@@ -48,7 +49,6 @@ function RecipesContainer(){
                     onChange={handleChange}
                 />
 
-                    <h1>This is Recipes</h1>
                 {searchResults.map((recipe) => (
                     <RecipeItem key={recipe.id} recipe={recipe}/>
                 ))}
