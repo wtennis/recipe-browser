@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 
-function MyRecipeItem({ recipe }){
+function MyRecipeItem({ recipe, searchResults, setSearchResults }){
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState({name: "", id: null})
 
-    function handleConsoleOneRecipeClick() {
-        fetch(`http://localhost:9292/recipes/${recipe.id}`, {
-          method: "GET",
+    function handleDeleteClick() {
+        fetch(`http://localhost:9292/my_recipes/${recipe.id}`, {
+          method: "DELETE",
         })
           .then((r) => r.json())
-          .then(console.log);
+          .then(deleted => {
+              console.log(deleted)
+              setSearchResults(searchResults.filter((recipe) => recipe.id !== deleted.id));
+          });
       }
 
 
@@ -57,7 +60,7 @@ function MyRecipeItem({ recipe }){
         <div>
             <h3>{recipe.name}</h3>
             <p>{recipe.description}</p>
-            <button onClick = {() => handleConsoleOneRecipeClick(recipe.id)}>Delete this recipe</button>
+            <button onClick = {handleDeleteClick}>Delete this recipe</button>
        
         {ingredients.length?
                     <>
