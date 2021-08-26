@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
 
 
   get "/my_recipes" do 
-    User.first.recipes.to_json
+    User.first.recipes.uniq.to_json
   end
 
   get "/recipes/:id" do
