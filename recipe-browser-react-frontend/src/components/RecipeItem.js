@@ -15,75 +15,38 @@ function RecipeItem({ recipe }){
 
     function handleShowIngredientsClick() {
         console.log('handleShowIngredientsClick')
-        
-        fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
-            method: "GET",
-          })
-            .then((r) => r.json())
-            .then(data => {
-                setIngredients(data);
-                console.log(data)
-            });
-    }
 
-    function handleAddIngredient() {
-        console.log(newIngredient)
+        ingredients.length? 
+                setIngredients([])
+            :
+                (fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
+                    method: "GET",
+                })
+                    .then((r) => r.json())
+                    .then(data => {
+                        setIngredients(data);
+                        console.log(data)
+                    }))    
+            }
 
-        // First, find_or_create ingredient in master ingredients table
-      fetch("http://localhost:9292/ingredients", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: newIngredient.name
-            }),
-            })
-            .then((r) => r.json())
-            .then((newI) => {
-                setNewIngredient({name: "", id: null})
-                setIngredients([...ingredients, newI])
-                // Then, POST new row to RecipeIngredient (associate the ingredient with a recipe)
-                // OTHERWISE, ingredient will not show up with this recipe upon refresh
-                fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        ingredient_id: newI.id,
-                    }),
-                    });
-            });
-
-    }
 
 
     return (
         <div>
             <h3>{recipe.name}</h3>
             <p>{recipe.description}</p>
-            <button onClick = {() => handleConsoleOneRecipeClick(recipe.id)}>Console.log this recipe</button>
+            <button onClick = {() => handleConsoleOneRecipeClick(recipe.id)}>Save this recipe</button>
        
-        {ingredients.length === 0?
-                <button onClick = {handleShowIngredientsClick}>Show Ingredients</button>
-            :
+        {ingredients.length?
                 <>
-                    <ul>Ingredients</ul>
-                    {ingredients.map(i => (
-                    <li key = {i.id}>{i.name}</li>
-                    ))}
-
-                    <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        value={newIngredient.name}
-                        onChange={(e) => setNewIngredient({name: e.target.value, id: null})}
-                    />
-                    <button type = "submit" onClick = {handleAddIngredient}>Add ingredient</button>
-                
+                <button onClick = {handleShowIngredientsClick}>Hide Ingredients</button>
+                   <ul>Ingredients</ul>
+                   {ingredients.map(i => (
+                   <li key = {i.id}>{i.name}</li>
+                   ))}                
                 </>
+            :
+                <button onClick = {handleShowIngredientsClick}>Show Ingredients</button>
         }
 
         </div>
