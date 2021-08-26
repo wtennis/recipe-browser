@@ -63,18 +63,27 @@ ingredients = [
     "flour",
     "brown sugar",
     "white sugar",
-    "cinnamon"
+    "cinnamon",
+    "butter",
+    "olive oil",
+    "rosemary",
+    "garlic"
 ]
 
 ingredients.map{|name| Ingredient.create(name: name)}
 
-40.times do 
-    Ingredient.create(
-        name: Faker::Food.ingredient
-    )
-end
+# 40.times do 
+#     Ingredient.create(
+#         name: Faker::Food.ingredient
+#     )
+# end
 
 #seed recipe_ingredients
+
+RecipeIngredient.create(
+    recipe_id: 1,
+    ingredient_id: 10
+)
 
 RecipeIngredient.create(
     recipe_id: 1,
@@ -93,12 +102,27 @@ RecipeIngredient.create(
 
 RecipeIngredient.create(
     recipe_id: 1,
-    ingredient_id: 11
+    ingredient_id: 14
 )
 
 RecipeIngredient.create(
     recipe_id: 2,
     ingredient_id: 2
+)
+
+RecipeIngredient.create(
+    recipe_id: 2,
+    ingredient_id: 15
+)
+
+RecipeIngredient.create(
+    recipe_id: 2,
+    ingredient_id: 16
+)
+
+RecipeIngredient.create(
+    recipe_id: 2,
+    ingredient_id: 17
 )
 
 RecipeIngredient.create(
@@ -130,6 +154,12 @@ RecipeIngredient.create(
     recipe_id: 3,
     ingredient_id: 12
 )
+
+RecipeIngredient.create(
+    recipe_id: 3,
+    ingredient_id: 13
+)
+
 
 
 #seed user_recipe_ingredients
