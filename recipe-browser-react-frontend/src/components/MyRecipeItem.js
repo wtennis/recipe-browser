@@ -27,6 +27,10 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
             }
 
     function handleAddIngredient() {
+        
+        if (ingredients.some(i => i.name === newIngredient.name)) {
+            return
+        } else 
 
         fetch("http://localhost:9292/ingredients", {
             method: "POST",
