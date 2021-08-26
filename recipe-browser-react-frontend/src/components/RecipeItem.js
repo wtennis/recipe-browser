@@ -14,22 +14,14 @@ function RecipeItem({ recipe }){
 
 
     function handleShowIngredientsClick() {
-        console.log('handleShowIngredientsClick')
-
-        ingredients.length? 
-                setIngredients([])
-            :
                 (fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
                     method: "GET",
                 })
                     .then((r) => r.json())
                     .then(data => {
                         setIngredients(data);
-                        console.log(data)
                     }))    
             }
-
-
 
     return (
         <div>
@@ -39,7 +31,7 @@ function RecipeItem({ recipe }){
        
         {ingredients.length?
                 <>
-                <button onClick = {handleShowIngredientsClick}>Hide Ingredients</button>
+                <button onClick = {() => setIngredients([])}>Hide Ingredients</button>
                    <ul>Ingredients</ul>
                    {ingredients.map(i => (
                    <li key = {i.id}>{i.name}</li>
