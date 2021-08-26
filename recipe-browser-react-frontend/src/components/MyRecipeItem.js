@@ -55,6 +55,20 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
 
     }
 
+    function handleRemoveIngredient(ingr_id_to_delete) {
+        console.log(ingr_id_to_delete)
+        fetch(`http://localhost:9292/my_recipes/${recipe.id}/ingredients/${ingr_id_to_delete}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then((r) => r.json())
+        .then(deleted => {
+            console.log(deleted)
+            setIngredients(ingredients.filter((ingredient) => ingredient.id !== ingr_id_to_delete))
+        });
+    }
 
     return (
         <div>
@@ -67,7 +81,10 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
                     <button onClick = {() => setIngredients([])}>Hide Ingredients</button>
                     <ul>Ingredients</ul>
                     {ingredients.map(i => (
-                    <li key = {i.id}>{i.name}</li>
+                        <li key = {i.id}>
+                            <button onClick={() => handleRemoveIngredient(i.id)}></button>
+                            <span>{i.name}</span>
+                        </li>
                     ))}
 
                     <input

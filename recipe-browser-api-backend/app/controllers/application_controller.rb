@@ -74,5 +74,12 @@ class ApplicationController < Sinatra::Base
     new_ingredient.to_json
   end
 
+  delete "/my_recipes/:id/ingredients/:ingr" do
+    # params[:id] is this recipe
+    # params[:ingredient_id] is the ingredient_id to be deleted
+    deleted_ingredient = UserRecipeIngredient.destroy_by(ingredient_id: params[:ingr], recipe_id: params[:id])
+    deleted_ingredient.to_json
+  end
+
 
 end
