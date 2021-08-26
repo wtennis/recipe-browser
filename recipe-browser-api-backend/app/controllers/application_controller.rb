@@ -16,6 +16,10 @@ class ApplicationController < Sinatra::Base
     recipe = Recipe.find(params[:id])
     recipe.to_json
   end
+
+#~~~~~~~~~~~~~~~~~~
+# INGREDIENTS CRUD
+#~~~~~~~~~~~~~~~~~~
   get "/ingredients" do
     Ingredient.all.to_json
   end
@@ -36,6 +40,11 @@ class ApplicationController < Sinatra::Base
       #   new_ingredient.to_json
       # end
 
+
+#~~~~~~~~~~~~~~~~~~
+# MY RECIPE CRUD
+#~~~~~~~~~~~~~~~~~~
+
   get "/my_recipes" do 
     User.first.recipes.uniq.to_json
   end
@@ -46,6 +55,12 @@ class ApplicationController < Sinatra::Base
       UserRecipeIngredient.find_or_create_by(user_id: 1, recipe_id: params[:recipe_id], ingredient_id: i.id)
     end
     saved_recipe.to_json
+  end
+
+  delete "/my_recipes/:id" do 
+    delete_saved = UserRecipeIngredient.where(recipe_id: params[:id]).destroy_all
+    Recipe.find(params[:id]).to_json
+
   end
   
   get "/my_recipes/:id/ingredients" do

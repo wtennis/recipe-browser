@@ -36,7 +36,6 @@ function MyRecipesContainer(){
         setSearchTerm(e.target.value);
     };
 
-
   return (
     <>
         {recipes.length !== 0? 
@@ -51,12 +50,12 @@ function MyRecipesContainer(){
                 />
 
                 {searchResults.map((recipe) => (
-                    <MyRecipeItem key={recipe.id} recipe={recipe}/>
+                    <MyRecipeItem key={recipe.id} recipe={recipe} searchResults={searchResults} setSearchResults={setSearchResults}/>
                 ))}
 
                 </div>
             :
-                <h1>Loading...</h1>
+                <h1>You have no recipes saved!</h1>
     }
     </>
 );
