@@ -15,8 +15,6 @@ function RecipeItem({ recipe }){
 
 
     function handleShowIngredientsClick() {
-        //fix this fetch to grab ingredients from user_recipe_ingredients!
-        //path: "/recipes/:id/ingredients"
                 (fetch(`http://localhost:9292/recipes/${recipe.id}/ingredients`, {
                     method: "GET",
                 })

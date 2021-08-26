@@ -10,7 +10,12 @@ class ApplicationController < Sinatra::Base
   get "/recipes" do
     Recipe.all.to_json
   end
+
   
+  get "/recipes/:id" do
+    recipe = Recipe.find(params[:id])
+    recipe.to_json
+  end
   get "/ingredients" do
     Ingredient.all.to_json
   end
@@ -18,16 +23,6 @@ class ApplicationController < Sinatra::Base
   post "/ingredients" do 
     new_ingredient = Ingredient.find_or_create_by(name: params[:name])
     new_ingredient.to_json
-  end
-
-
-  get "/my_recipes" do 
-    User.first.recipes.uniq.to_json
-  end
-
-  get "/recipes/:id" do
-    recipe = Recipe.find(params[:id])
-    recipe.to_json
   end
 
   get "/recipes/:id/ingredients" do
@@ -40,6 +35,14 @@ class ApplicationController < Sinatra::Base
     new_ingredient.to_json
   end
 
+  get "/my_recipes" do 
+    User.first.recipes.uniq.to_json
+  end
   
+  get "/my_recipes/:id/ingredients" do
+    all_instances = UserRecipeIngredient.all.where(user_id: 1, recipe_id: params[:id])
+    ingredient_ids = all_instances.pluck(:ingredient_id)
+    Ingredient.where(id: ingredient_ids).to_json
+  end
 
 end
