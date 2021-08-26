@@ -3,6 +3,9 @@ import RecipeItem from './RecipeItem';
 
 function RecipesContainer(){
   const [recipes, setRecipes] = useState([])
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState([]);
+
 
   const URL = "http://localhost:9292/recipes"
 
@@ -15,22 +18,41 @@ function RecipesContainer(){
         const parsedBody = await res.json();
 
         setRecipes(parsedBody);
+        setSearchResults(parsedBody)
         }
 
-fetchRecipes();
-}, [])
+    fetchRecipes();
+    }, [])
+
+    useEffect(() => {
+        const results = recipes.filter(recipe =>
+        recipe.name.toLowerCase().includes(searchTerm)
+        );
+        setSearchResults(results);
+    }, [searchTerm]);
+
+    const handleChange = e => {
+        setSearchTerm(e.target.value);
+    };
+
 
   return (
     <>
         {recipes.length !== 0? 
                 <div>
-      
-                <h3>This is RecipesContainer</h3>
-                
-                {recipes.map((recipe) => (
-                        <RecipeItem key = {recipe.id} recipe={recipe}/>
-                    ))}
-                
+                <br></br>
+                    <input
+                    type="text"
+                    placeholder="Recipe name"
+                    value={searchTerm}
+                    onChange={handleChange}
+                />
+
+                    <h1>This is Recipes</h1>
+                {searchResults.map((recipe) => (
+                    <RecipeItem key={recipe.id} recipe={recipe}/>
+                ))}
+
                 </div>
             :
                 <h1>Loading...</h1>
