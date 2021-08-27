@@ -40,7 +40,7 @@ function MyRecipesContainer(){
     <>
         {recipes.length !== 0? 
                   <div>
-                  <h1>This is MyRecipes</h1>
+                  <h1>My Recipes</h1>
                   <br></br>
                       <input
                       type="text"

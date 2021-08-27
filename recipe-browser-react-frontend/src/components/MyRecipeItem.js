@@ -83,7 +83,7 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
         onMouseLeave={() => setStyle("column is-one-quarter")}
         className={style}>
              <div className="box">
-                <p className="title is-5">{recipe.name}</p>
+             <span className="title is-5">{recipe.name}</span>
                 <span>
                     <img src={recipe.image} alt={recipe.name} />
                 </span>
@@ -98,25 +98,29 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
         {ingredients.length?
                     <>
                     <button className = "button is-info is-small is-rounded" onClick = {() => setIngredients([])}>Hide Ingredients</button>
-                    <ul>Ingredients</ul>
-                    {ingredients.map(i => (
-                        <li key = {i.id}
-                        onMouseEnter={() => setIngredientHover(true)}
-                        onMouseLeave={() => setIngredientHover(false)}
-                        >
-                            {ingredientHover? 
-                                    <button className="button is-danger is-small is-light is-rounded" onClick={() => handleRemoveIngredient(i.id)}>
-                                        <span className="icon is-small">
-                                            <i class="far fa-trash-alt"></i>
-                                        </span>
-                                    </button>
-                                : 
-                                    null
-                                    }
-                            <span> {i.name}</span>
-                        </li>
-                    ))}
-
+                    <div className="content">
+                        <hr></hr>
+                        <h5>Ingredients</h5>
+                            <ul
+                            onMouseEnter={() => setIngredientHover(true)}
+                            onMouseLeave={() => setIngredientHover(false)}
+                            > 
+                                {ingredients.map(i => (
+                                    <li key = {i.id}>
+                                        {ingredientHover? 
+                                                <button className="button is-danger is-small is-light is-rounded" onClick={() => handleRemoveIngredient(i.id)}>
+                                                    <span className="icon is-small">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </span>
+                                                </button>
+                                            : 
+                                                null
+                                                }
+                                        <span> {i.name}</span>
+                                    </li>
+                                ))} 
+                            </ul>
+                    </div>
                     <input
                         type="text"
                         name="name"

@@ -44,9 +44,9 @@ useEffect(() => {
     <div>
         <>
             {ingredients.length !== 0? 
-                    <div>
+                    <div className = "content">
         
-                    <h1>This is IngredientsContainer</h1>
+                    <h3>Ingredients</h3>
                     
                     <input
                         type="text"
@@ -55,7 +55,7 @@ useEffect(() => {
                         value={newIngredient}
                         onChange={(e) => setNewIngredient(e.target.value)}
                     />
-                    <button type = "submit" onClick = {handleAddIngredient}>Add ingredient</button>
+                    <button className = "button is-primary is-rounded is-small" type = "submit" onClick = {handleAddIngredient}>Add ingredient</button>
 
                     {ingredients.map((ingredient) => (
                             <IngredientItem key = {ingredient.id} ingredient={ingredient}/>

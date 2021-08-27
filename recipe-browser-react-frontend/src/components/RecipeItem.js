@@ -37,7 +37,7 @@ function RecipeItem({ recipe }){
         onMouseLeave={() => setStyle("column is-3")}
         className={style}>
             <div className="box">
-                <p className="title is-5">{recipe.name}</p>
+             <span className="title is-5">{recipe.name}</span>
                 <span>
                     <img src={recipe.image} alt={recipe.name} />
                 </span>
@@ -52,10 +52,15 @@ function RecipeItem({ recipe }){
         {ingredients.length?
                     <>
                         <button className = "button is-info is-small is-rounded" onClick={() => setIngredients([])}>Hide Ingredients</button>
-                        <ul>Ingredients</ul>
-                        {ingredients.map(i => (
-                            <li key = {i.id}>{i.name}</li>
-                        ))}                
+                        <div className="content">
+                            <hr></hr>
+                            <h5>Ingredients</h5>
+                                <ul>
+                                    {ingredients.map(i => (
+                                        <li key = {i.id}>{i.name}</li>
+                                    ))}    
+                                </ul>       
+                        </div>     
                     </>
                 :                    
                     <button className="button is-info is-small is-rounded" onClick={handleShowIngredientsClick}>

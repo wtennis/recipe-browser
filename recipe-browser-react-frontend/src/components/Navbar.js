@@ -3,17 +3,31 @@ import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <div>
+    <div className = "content">
       <span>
-        <img src= "../food-icon5.png" className = "icon"></img>
-        <h1 className= "">Home Chef</h1>
+        <img style={{display:"inline-block", marginRight: "10px"}} src= "../food-icon5.png" className = "icon"></img>
+        <h1 style={{display:"inline-block"}} className= "">Home Chef</h1>
       </span>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/recipes">Recipes</NavLink>
-        <NavLink to="/my_recipes">My Recipes</NavLink>
-        <NavLink to="/ingredients">Ingredients</NavLink>
-      </nav>
+      <div className="buttons has-addons">
+        <nav>
+          <button className="button is-inverted">
+          <NavLink to="/">
+            <span class="icon">
+              <i class="fas fa-home"></i>
+            </span>
+          </NavLink>
+          </button>
+          <button className="button is-inverted">
+            <NavLink to="/recipes">Recipes</NavLink>
+          </button>
+          <button className="button is-inverted">
+            <NavLink to="/my_recipes">My Recipes</NavLink>
+          </button>
+          <button className="button is-inverted"> 
+            <NavLink to="/ingredients">Ingredients</NavLink>
+          </button>
+        </nav>
+      </div>
     </div>
   );
 }
