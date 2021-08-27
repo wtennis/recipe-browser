@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,7 +35,7 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .photo {
   height: auto;
@@ -45,4 +45,14 @@
 .icon {
   height: auto;
   width: 40px;
+}
+
+.active-navlink {
+  font-weight: bold;
+}
+
+.active-home-icon {
+  /* color: "#167A8B"; */
+  color: "black";
+  background-color: black;
 }
