@@ -41,8 +41,13 @@ function RecipeItem({ recipe }){
                 <span>
                     <img src={recipe.image} alt={recipe.name} />
                 </span>
-                <p className="subtitle">{recipe.description}</p>
-                <button className = "button is-primary is-small is-rounded" onClick={handleSaveClick}>Save this recipe</button>
+                <p className="subtitle">{recipe.description}</p>                
+                <button className="button is-success is-small is-rounded" onClick={handleSaveClick}>
+                    <span className="icon is-small">
+                        <i className="fas fa-check"></i>
+                    </span>
+                    <span>Save</span>
+                 </button>
 
         {ingredients.length?
                     <>
@@ -52,8 +57,13 @@ function RecipeItem({ recipe }){
                             <li key = {i.id}>{i.name}</li>
                         ))}                
                     </>
-                :
-                    <button className = "button is-info is-small is-rounded" onClick = {handleShowIngredientsClick}>Show Ingredients</button>
+                :                    
+                    <button className="button is-info is-small is-rounded" onClick={handleShowIngredientsClick}>
+                        <span className="icon is-info is-small is-rounded">
+                            <i class="fas fa-list"></i>             
+                        </span>
+                        <span>Ingredients</span>
+                    </button>
                 }
             </div>
         </div>

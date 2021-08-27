@@ -88,11 +88,16 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
                     <img src={recipe.image} alt={recipe.name} />
                 </span>
                 <p className="subtitle">{recipe.description}</p>
-                <button className = "button is-danger is-small is-rounded" onClick = {handleDeleteClick}>Delete this recipe</button>
+                <button className = "button is-danger is-small is-rounded" onClick = {handleDeleteClick}>
+                    <span className="icon is-small">
+                        <i class="far fa-trash-alt"></i>
+                    </span>
+                    <span>Delete this recipe</span>
+                </button>
        
         {ingredients.length?
                     <>
-                    <button className = "button is-primary is-small is-rounded" onClick = {() => setIngredients([])}>Hide Ingredients</button>
+                    <button className = "button is-info is-small is-rounded" onClick = {() => setIngredients([])}>Hide Ingredients</button>
                     <ul>Ingredients</ul>
                     {ingredients.map(i => (
                         <li key = {i.id}
@@ -100,12 +105,11 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
                         onMouseLeave={() => setIngredientHover(false)}
                         >
                             {ingredientHover? 
-                                    <>
-                                    <span class="icon is-small">
-                                        <i class="fas fa-times"></i>
-                                    </span>
-                                    <button className = "button is-danger is-light is-outlined is-small is-rounded" onClick={() => handleRemoveIngredient(i.id)}>X</button>
-                                    </>
+                                    <button className="button is-danger is-small is-light is-rounded" onClick={() => handleRemoveIngredient(i.id)}>
+                                        <span className="icon is-small">
+                                            <i class="far fa-trash-alt"></i>
+                                        </span>
+                                    </button>
                                 : 
                                     null
                                     }
@@ -124,8 +128,13 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
                 
                 </>
             :
-                <button className = "button is-primary is-small is-rounded" onClick = {handleShowIngredientsClick}>Show Ingredients</button>
-        }
+                    <button className="button is-info is-small is-rounded" onClick={handleShowIngredientsClick}>
+                        <span className="icon is-info is-small is-rounded">
+                            <i class="fas fa-list"></i>             
+                        </span>
+                        <span>Ingredients</span>
+                    </button>                    
+            }
             </div>
         </div>
     
