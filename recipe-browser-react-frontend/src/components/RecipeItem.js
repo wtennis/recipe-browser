@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 function RecipeItem({ recipe }){
     const [ingredients, setIngredients] = useState([])
+    const [style, setStyle] = useState("column")
+
+
 
     function handleSaveClick() {
         fetch("http://localhost:9292/my_recipes", {
@@ -29,26 +32,31 @@ function RecipeItem({ recipe }){
             }
 
     return (
-        <div className = "column">
-            <h3>{recipe.name}</h3>
-            <span>
-                <img className="photo" src={recipe.image} alt={recipe.name} />
-            </span>
-            <p>{recipe.description}</p>
-            <button className = "button is-primary is-small" onClick={handleSaveClick}>Save this recipe</button>
-       
-        {ingredients.length?
-                <>
-                <button className = "button is-info is-small" onClick={() => setIngredients([])}>Hide Ingredients</button>
-                   <ul>Ingredients</ul>
-                   {ingredients.map(i => (
-                   <li key = {i.id}>{i.name}</li>
-                   ))}                
-                </>
-            :
-                <button className = "button is-info is-small" onClick = {handleShowIngredientsClick}>Show Ingredients</button>
-        }
+        <div 
+        onMouseEnter={() => setStyle("column is-one-fifth")}
+        onMouseLeave={() => setStyle("column")}
+        className={style}>
+            <div className="box">
+                <p className="title is-5">{recipe.name}</p>
+                <span>
+                    <img src={recipe.image} alt={recipe.name} />
+                </span>
+                <p className="subtitle">{recipe.description}</p>
+                <button className = "button is-primary is-small" onClick={handleSaveClick}>Save this recipe</button>
 
+        {ingredients.length?
+                    <>
+                        <button className = "button is-info is-small" onClick={() => setIngredients([])}>Hide Ingredients</button>
+                        <ul>Ingredients</ul>
+                        {ingredients.map(i => (
+                            <li key = {i.id}>{i.name}</li>
+                        ))}                
+                    </>
+                :
+                    <button className = "button is-info is-small" onClick = {handleShowIngredientsClick}>Show Ingredients</button>
+                    
+                }
+            </div>
         </div>
     
       );
