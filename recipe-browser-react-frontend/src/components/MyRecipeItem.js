@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function MyRecipeItem({ recipe, searchResults, setSearchResults }){
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState({name: "", id: null})
+    const [style, setStyle] = useState("column")
 
     function handleDeleteClick() {
         fetch(`http://localhost:9292/my_recipes/${recipe.id}`, {
@@ -75,22 +76,26 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
     }
 
     return (
-        <div className="column">
-            <h3>{recipe.name}</h3>
-            <span>
-            <img className="photo" src={recipe.image} alt={recipe.name} />
-            </span>
-            <p>{recipe.description}</p>
-            <button onClick = {handleDeleteClick}>Delete this recipe</button>
+        <div 
+        onMouseEnter={() => setStyle("column")}
+        onMouseLeave={() => setStyle("column")}
+        className={style}>
+             <div className="box">
+                <p className="title is-5">{recipe.name}</p>
+                <span>
+                    <img src={recipe.image} alt={recipe.name} />
+                </span>
+                <p className="subtitle">{recipe.description}</p>
+                <button className = "button is-danger is-small" onClick = {handleDeleteClick}>Delete this recipe</button>
        
         {ingredients.length?
                     <>
-                    <button onClick = {() => setIngredients([])}>Hide Ingredients</button>
+                    <button className = "button is-primary is-small" onClick = {() => setIngredients([])}>Hide Ingredients</button>
                     <ul>Ingredients</ul>
                     {ingredients.map(i => (
                         <li key = {i.id}>
-                            <button onClick={() => handleRemoveIngredient(i.id)}></button>
-                            <span>{i.name}</span>
+                            <button className = "button is-danger is-outlined is-small" onClick={() => handleRemoveIngredient(i.id)}>X</button>
+                            <span> {i.name}</span>
                         </li>
                     ))}
 
@@ -101,13 +106,13 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
                         value={newIngredient.name}
                         onChange={(e) => setNewIngredient({name: e.target.value, id: null})}
                     />
-                    <button type = "submit" onClick = {handleAddIngredient}>Add ingredient</button>
+                    <button className = "button is-success is-small" type = "submit" onClick = {handleAddIngredient}>Add ingredient</button>
                 
                 </>
             :
-                <button onClick = {handleShowIngredientsClick}>Show Ingredients</button>
+                <button className = "button is-primary is-small" onClick = {handleShowIngredientsClick}>Show Ingredients</button>
         }
-
+            </div>
         </div>
     
       );
