@@ -90,7 +90,7 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
                 <p className="subtitle">{recipe.description}</p>
                 <button className = "button is-danger is-small is-rounded" onClick = {handleDeleteClick}>
                     <span className="icon is-small">
-                        <i class="far fa-trash-alt"></i>
+                        <i className="far fa-trash-alt"></i>
                     </span>
                     <span>Delete this recipe</span>
                 </button>
@@ -110,7 +110,7 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
                                         {ingredientHover? 
                                                 <button className="button is-danger is-small is-light is-rounded" onClick={() => handleRemoveIngredient(i.id)}>
                                                     <span className="icon is-small">
-                                                        <i class="far fa-trash-alt"></i>
+                                                        <i className="far fa-trash-alt"></i>
                                                     </span>
                                                 </button>
                                             : 
@@ -134,7 +134,7 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
             :
                     <button className="button is-info is-small is-rounded" onClick={handleShowIngredientsClick}>
                         <span className="icon is-info is-small is-rounded">
-                            <i class="fas fa-list"></i>             
+                            <i className="fas fa-list"></i>             
                         </span>
                         <span>Ingredients</span>
                     </button>                    
