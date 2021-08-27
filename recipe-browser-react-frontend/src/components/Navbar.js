@@ -4,7 +4,10 @@ import { NavLink } from 'react-router-dom';
 function Navbar() {
   return (
     <div>
-      <h1 className= "">Home Chef</h1>
+      <span>
+        <img src= "../food-icon5.png" className = "icon"></img>
+        <h1 className= "">Home Chef</h1>
+      </span>
       <nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/recipes">Recipes</NavLink>
