@@ -77,6 +77,9 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
     return (
         <div>
             <h3>{recipe.name}</h3>
+            <span>
+            <img className="photo" src={recipe.image} alt={recipe.name} />
+            </span>
             <p>{recipe.description}</p>
             <button onClick = {handleDeleteClick}>Delete this recipe</button>
        
