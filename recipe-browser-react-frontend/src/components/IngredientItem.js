@@ -6,7 +6,7 @@ function IngredientItem({ingredient}){
 
   return (
     <div>
-        <h4>{ingredient.name}</h4>
+        <li key = {ingredient.id}>{ingredient.name}</li>
     </div>
 
   );

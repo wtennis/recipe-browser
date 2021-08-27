@@ -5,7 +5,7 @@ function Home(){
 
 
   return (
-    <div>
+    <div style= {{margin: 'auto', width: '400px'}}>
       <form className = "box">
         <div className="field">
           <label className="label">Email</label>
