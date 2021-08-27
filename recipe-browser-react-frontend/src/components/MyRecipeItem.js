@@ -75,7 +75,7 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
     }
 
     return (
-        <div>
+        <div className="column">
             <h3>{recipe.name}</h3>
             <span>
             <img className="photo" src={recipe.image} alt={recipe.name} />
