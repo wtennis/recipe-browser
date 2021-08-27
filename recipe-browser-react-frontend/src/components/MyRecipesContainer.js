@@ -56,8 +56,9 @@ function MyRecipesContainer(){
                     </div>
                 </div>
             :
-              <span className="loader"></span>
-    }
+                <div style={{marginLeft: "auto", marginRight: "auto", width: "50px", marginTop: "50px"}}>
+                  <i className="loader"></i>
+                </div>    }
     </>
 );
 
