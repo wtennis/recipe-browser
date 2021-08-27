@@ -84,6 +84,7 @@ function MyRecipeItem({ recipe, searchResults, setSearchResults }){
         className={style}>
              <div className="box">
              <span className="title is-5">{recipe.name}</span>
+             <br></br>
                 <span>
                     <img src={recipe.image} alt={recipe.name} />
                 </span>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function RecipeItem({ recipe }){
     const [ingredients, setIngredients] = useState([])
-    const [style, setStyle] = useState("column is-3")
+    const [style, setStyle] = useState("column is-2")
 
 
 
@@ -34,11 +34,12 @@ function RecipeItem({ recipe }){
     return (
 
         <div 
-        onMouseEnter={() => setStyle("column is-3")}
-        onMouseLeave={() => setStyle("column is-3")}
+        onMouseEnter={() => setStyle("column is-4")}
+        onMouseLeave={() => setStyle("column is-2")}
         className={style}>
             <div className="box">
              <span className="title is-5">{recipe.name}</span>
+             <br></br>
                 <span>
                     <img src={recipe.image} alt={recipe.name} />
                 </span>
