@@ -40,14 +40,15 @@ function MyRecipesContainer(){
     <>
         {recipes.length !== 0? 
                   <div>
-                  <h1>My Recipes</h1>
                   <br></br>
                       <input
+                      style= {{display:"inline-block", marginLeft: "10px"}}
                       type="text"
                       placeholder="Search recipes..."
                       value={searchTerm}
                       onChange={handleChange}
                 />
+                <hr></hr>
                     <div className = "columns is-multiline is-variable is-vcentered">
                       {searchResults.map((recipe) => (
                           <MyRecipeItem key={recipe.id} recipe={recipe} searchResults={searchResults} setSearchResults={setSearchResults}/>

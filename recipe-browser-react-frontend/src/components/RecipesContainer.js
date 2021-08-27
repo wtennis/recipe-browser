@@ -40,9 +40,9 @@ function RecipesContainer(){
     <>
         {recipes.length !== 0? 
                 <div>
-                <h1>Recipes</h1>
                 <br></br>
                     <input
+                    style= {{display:"inline-block", marginLeft: "10px"}}
                     type="text"
                     placeholder="Search recipes..."
                     value={searchTerm}
