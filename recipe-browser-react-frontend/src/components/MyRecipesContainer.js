@@ -44,7 +44,7 @@ function MyRecipesContainer(){
                 <br></br>
                     <input
                     type="text"
-                    placeholder="Recipe name"
+                    placeholder="Search recipes..."
                     value={searchTerm}
                     onChange={handleChange}
                 />

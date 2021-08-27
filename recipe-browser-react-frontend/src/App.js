@@ -4,6 +4,7 @@ import Home from './components/Home';
 import RecipesContainer from './components/RecipesContainer';
 import MyRecipesContainer from './components/MyRecipesContainer';
 import IngredientsContainer from './components/IngredientsContainer';
+import "./App.css";
 
 function App() {
   return (
