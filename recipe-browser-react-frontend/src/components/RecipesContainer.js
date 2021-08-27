@@ -49,7 +49,7 @@ function RecipesContainer(){
                     onChange={handleChange}
                 />
                 <hr></hr>
-                    <div className = "columns">
+                    <div className = "columns is-multiline is-variable is-vcentered">
                         {searchResults.map((recipe) => (
                             <RecipeItem key={recipe.id} recipe={recipe}/>
                         ))}

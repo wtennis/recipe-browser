@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function RecipeItem({ recipe }){
     const [ingredients, setIngredients] = useState([])
-    const [style, setStyle] = useState("column")
+    const [style, setStyle] = useState("column is-3")
 
 
 
@@ -33,8 +33,8 @@ function RecipeItem({ recipe }){
 
     return (
         <div 
-        onMouseEnter={() => setStyle("column is-one-fifth")}
-        onMouseLeave={() => setStyle("column")}
+        onMouseEnter={() => setStyle("column is-3")}
+        onMouseLeave={() => setStyle("column is-3")}
         className={style}>
             <div className="box">
                 <p className="title is-5">{recipe.name}</p>
@@ -42,19 +42,18 @@ function RecipeItem({ recipe }){
                     <img src={recipe.image} alt={recipe.name} />
                 </span>
                 <p className="subtitle">{recipe.description}</p>
-                <button className = "button is-primary is-small" onClick={handleSaveClick}>Save this recipe</button>
+                <button className = "button is-primary is-small is-rounded" onClick={handleSaveClick}>Save this recipe</button>
 
         {ingredients.length?
                     <>
-                        <button className = "button is-info is-small" onClick={() => setIngredients([])}>Hide Ingredients</button>
+                        <button className = "button is-info is-small is-rounded" onClick={() => setIngredients([])}>Hide Ingredients</button>
                         <ul>Ingredients</ul>
                         {ingredients.map(i => (
                             <li key = {i.id}>{i.name}</li>
                         ))}                
                     </>
                 :
-                    <button className = "button is-info is-small" onClick = {handleShowIngredientsClick}>Show Ingredients</button>
-                    
+                    <button className = "button is-info is-small is-rounded" onClick = {handleShowIngredientsClick}>Show Ingredients</button>
                 }
             </div>
         </div>

@@ -48,7 +48,7 @@ function MyRecipesContainer(){
                       value={searchTerm}
                       onChange={handleChange}
                 />
-                    <div className = "columns">
+                    <div className = "columns is-multiline is-variable is-vcentered">
                       {searchResults.map((recipe) => (
                           <MyRecipeItem key={recipe.id} recipe={recipe} searchResults={searchResults} setSearchResults={setSearchResults}/>
                       ))}
