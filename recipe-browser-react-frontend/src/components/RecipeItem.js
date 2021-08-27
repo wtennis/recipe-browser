@@ -32,6 +32,7 @@ function RecipeItem({ recipe }){
             }
 
     return (
+
         <div 
         onMouseEnter={() => setStyle("column is-3")}
         onMouseLeave={() => setStyle("column is-3")}

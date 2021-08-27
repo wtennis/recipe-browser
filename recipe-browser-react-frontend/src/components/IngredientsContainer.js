@@ -44,10 +44,8 @@ useEffect(() => {
     <div>
         <>
             {ingredients.length !== 0? 
-                    <div className = "content">
-        
-                    <h3>Ingredients</h3>
-                    
+                    <div style={{marginLeft: "10px"}} className = "content">
+                    <h3>Ingredients</h3>   
                     <input
                         type="text"
                         name="name"
