@@ -48,14 +48,15 @@ function RecipesContainer(){
                     value={searchTerm}
                     onChange={handleChange}
                 />
-
-                {searchResults.map((recipe) => (
-                    <RecipeItem key={recipe.id} recipe={recipe}/>
-                ))}
-
+                <hr></hr>
+                    <div className = "columns">
+                        {searchResults.map((recipe) => (
+                            <RecipeItem key={recipe.id} recipe={recipe}/>
+                        ))}
+                    </div>
                 </div>
             :
-                <h1>Loading...</h1>
+                <span className="loader"></span>
     }
     </>
 );

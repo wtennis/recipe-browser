@@ -39,23 +39,23 @@ function MyRecipesContainer(){
   return (
     <>
         {recipes.length !== 0? 
-                <div>
-                <h1>This is MyRecipes</h1>
-                <br></br>
-                    <input
-                    type="text"
-                    placeholder="Search recipes..."
-                    value={searchTerm}
-                    onChange={handleChange}
+                  <div>
+                  <h1>This is MyRecipes</h1>
+                  <br></br>
+                      <input
+                      type="text"
+                      placeholder="Search recipes..."
+                      value={searchTerm}
+                      onChange={handleChange}
                 />
-
-                {searchResults.map((recipe) => (
-                    <MyRecipeItem key={recipe.id} recipe={recipe} searchResults={searchResults} setSearchResults={setSearchResults}/>
-                ))}
-
+                    <div className = "columns">
+                      {searchResults.map((recipe) => (
+                          <MyRecipeItem key={recipe.id} recipe={recipe} searchResults={searchResults} setSearchResults={setSearchResults}/>
+                      ))}
+                    </div>
                 </div>
             :
-                <h1>You have no recipes saved!</h1>
+              <span className="loader"></span>
     }
     </>
 );

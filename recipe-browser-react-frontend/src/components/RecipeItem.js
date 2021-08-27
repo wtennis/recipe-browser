@@ -29,24 +29,24 @@ function RecipeItem({ recipe }){
             }
 
     return (
-        <div>
+        <div className = "column">
             <h3>{recipe.name}</h3>
             <span>
                 <img className="photo" src={recipe.image} alt={recipe.name} />
             </span>
             <p>{recipe.description}</p>
-            <button onClick={handleSaveClick}>Save this recipe</button>
+            <button className = "button is-primary is-small" onClick={handleSaveClick}>Save this recipe</button>
        
         {ingredients.length?
                 <>
-                <button onClick={() => setIngredients([])}>Hide Ingredients</button>
+                <button className = "button is-info is-small" onClick={() => setIngredients([])}>Hide Ingredients</button>
                    <ul>Ingredients</ul>
                    {ingredients.map(i => (
                    <li key = {i.id}>{i.name}</li>
                    ))}                
                 </>
             :
-                <button onClick = {handleShowIngredientsClick}>Show Ingredients</button>
+                <button className = "button is-info is-small" onClick = {handleShowIngredientsClick}>Show Ingredients</button>
         }
 
         </div>
