@@ -1,3 +1,4 @@
+
 puts "🔥 Destroying data... 🔥"
 
 UserRecipeIngredient.destroy_all
@@ -49,7 +50,7 @@ showcase_recipes = [
     {
         name: "Steak au poivre",
         cuisine: "French",
-        description: "Filet mignon beef coated with coarsely cracked peppercorns. The peppercorns form a crust on the steak when cooked and provide a pungent but counterpoint to the beef",
+        description: "Filet mignon beef coated with coarsely cracked peppercorns. The peppercorns form a crust on the steak when cooked and provide a pungent counterpoint to the beef.",
         is_vegetarian: false, 
         image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/12/6/0/CC-alton-brown_steak-au-poivre-recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1371602797531.jpeg"
     },
@@ -94,10 +95,10 @@ recipe_images = [
 "https://infatuation.s3.amazonaws.com/media/images/guides/the-best-sushi-restaurants-in-seattle/kasinger_seattle_kashiba041.jpg",
 "https://www.bestfranceforever.com/wp-content/uploads/2018/01/1170x658_ratatouille.jpg",
 "https://theloopywhisk.com/wp-content/uploads/2018/11/Vegan-Chocolate-Truffle-Cake_730px-featured-500x500.jpg",
-"https://www.google.com/url?sa=i&url=https%3A%2F%2Fsimply-delicious-food.com%2Feasy-shrimp-aglio-e-olio%2F&psig=AOvVaw3fjE9yu0Tg8J00LtpMD-Jj&ust=1630121193388000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPDRsuig0PICFQAAAAAdAAAAABAD",
 "https://food-images.files.bbci.co.uk/food/recipes/rich_beef_and_mushroom_62012_16x9.jpg",
 "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-200612-fruit-tart-0001-landscape-ag-1592424815.jpg?crop=1.00xw:1.00xh;0,0&resize=980:*",
-"https://food-images.files.bbci.co.uk/food/recipes/classic_sourdough_21029_16x9.jpg"
+"https://food-images.files.bbci.co.uk/food/recipes/classic_sourdough_21029_16x9.jpg",
+"https://simply-delicious-food.com/wp-content/uploads/2019/09/Shrimp-Aglio-Olio-3.jpg"
 ]
 
 recipe_images.each do |image|
